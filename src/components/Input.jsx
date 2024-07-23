@@ -1,8 +1,27 @@
 import { styled } from "styled-components";
 
+function Input({ label, invalid, ...props }) {
+  let labelClass = '', inputClass = '';
+  if (invalid) {
+    labelClass = ' text-red-400 ';
+    inputClass = ' bg-red-100 text-red-400';
+  } else {
+    labelClass = ' text-stone-300';
+    inputClass = ' bg-stone-300 text-gray-700';
+  }
+  return <p>
+    <label className={`block mb-2 text-xs font-bold tracking-wide uppercase ${labelClass}`}>{label}</label>
+    <input className={`w-full px-3 py-2 leading-tight border rounded shadow ${inputClass}`} {...props} />
+  </p>
+}
+
+export default Input;
+
+
 /**
 * @param {boolean} props.$invalid - Indicate whether input value is valid
 */
+/*
 const Label = styled.label`
   display: block;
   margin-bottom: 0.5rem;
@@ -34,3 +53,4 @@ function CusInput({ label, invalid, ...props }) {
 }
 
 export default CusInput;
+*/
